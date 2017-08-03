@@ -70,7 +70,7 @@ else
 fi
 
 #安装chacha20的依赖库
-wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/libsodium-1.0.12.tar.gz
+wget -N --no-check-certificate https://raw.githubusercontent.com/madao232324/91yun_ssr_install/master/libsodium-1.0.12.tar.gz
 tar zfvx libsodium-1.0.12.tar.gz
 cd libsodium-1.0.12
 ./configure
@@ -84,7 +84,7 @@ cd /root/
 rm -rf libsodium-1.0.12.tar.gz libsodium-1.0.12
 
 #git安装ssr
-git clone https://github.com/91yun/shadowsocksr-1.git ${ssrdir}
+git clone https://github.com/madao232324/91yun_ssr1.git ${ssrdir}
 cd ${ssrdir}
 bash setup_cymysql.sh
 bash initcfg.sh
@@ -94,12 +94,12 @@ sed -i "s/127.0.0.1/$myip/g" ${ssrdir}userapiconfig.py
 
 #下载服务文件，添加到系统服务，并随机启动
 if [ "$OS" == 'CentOS' ]; then
-	if ! wget --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/ssr -O /etc/init.d/ssr; then
+	if ! wget --no-check-certificate https://raw.githubusercontent.com/madao232324/91yun_ssr_install/master/ssr -O /etc/init.d/ssr; then
 		echo "Failed to download ssr chkconfig file!"
 		exit 1
 	fi
 else
-	if ! wget --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/ssr-debian -O /etc/init.d/ssr; then
+	if ! wget --no-check-certificate https://raw.githubusercontent.com/madao232324/91yun_ssr_install/master/ssr-debian -O /etc/init.d/ssr; then
 		echo "Failed to download ssr chkconfig file!"
 		exit 1
 	fi
@@ -120,7 +120,7 @@ else
 fi
 
 #下载定制脚本到目录
-if ! wget --no-check-certificate https://raw.githubusercontent.com/91yun/shadowsocks_install/master/ssr.sh -O ${ssrdir}ssr.sh; then
+if ! wget --no-check-certificate https://raw.githubusercontent.com/madao232324/91yun_ssr_install/master/ssr.sh -O ${ssrdir}ssr.sh; then
 	echo "Failed to download ssr script file!"
 	exit 1
 fi
